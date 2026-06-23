@@ -8,13 +8,7 @@ Once the content is downloaded or viewed, the OTP becomes invalid and the resour
 
 ## 🌐 Live Demo
 
-### Frontend
-
 https://send-once-azure.vercel.app
-
-### Backend API
-
-https://file-sharing-project-opcq.onrender.com
 
 ---
 
