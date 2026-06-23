@@ -1,18 +1,42 @@
-# Python
-__pycache__/
-*.pyc
-.env
+# =========================
+# Python / FastAPI
+# =========================
+backend/.venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/.env
 
-# Upload folders
+# Runtime generated files
 backend/uploads/
 backend/texts/
 
-# Node
+# =========================
+# Node / React / Vite
+# =========================
 frontend/node_modules/
-
-# Vite
 frontend/dist/
+frontend/.env
 
-# OS
+# =========================
+# IDE
+# =========================
+.idea/
+.vscode/
+
+# =========================
+# OS Files
+# =========================
 .DS_Store
 Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Cache
+# =========================
+.pytest_cache/
+.mypy_cache/
+.cache/

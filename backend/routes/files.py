@@ -117,6 +117,7 @@ async def up_file(uploaded_file: Annotated[List[UploadFile],File(...)]):
 
 @router.get("/preview")
 async def preview(otp: str):
+    otp = otp.upper()
 
     if len(otp) != 6 or not otp.isalnum():
         raise HTTPException(
@@ -147,6 +148,8 @@ async def preview(otp: str):
 
 @router.get("/download")
 async def down(otp:str):
+    otp=otp.upper()
+
     if len(otp) != 6 or not otp.isalnum(): 
         raise HTTPException(status_code=400,detail="Invalid OTP")
     
