@@ -231,8 +231,16 @@ export async function downloadContent(
 
     const blob = await response.blob()
     const disposition = response.headers.get('content-disposition') ?? ''
-    const filenameMatch = disposition.match(/filename[^;=\n]*=(['"]?)([^'"\n]*)\1/)
-    const filename = filenameMatch?.[2] ?? undefined
+    let filename: string | undefined
+
+    const utf8Match = disposition.match(/filename\*=UTF-8''([^;]+)/i)
+
+    if (utf8Match) {
+      filename = decodeURIComponent(utf8Match[1])
+    } else {
+      const basicMatch = disposition.match(/filename="?([^"]+)"?/i)
+      filename = basicMatch?.[1]
+    }
 
     const isTextFile =
       contentType.includes('text/plain') ||
