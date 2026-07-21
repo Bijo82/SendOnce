@@ -45,7 +45,7 @@ export function parseApiError(status: number, body: unknown): ApiError {
 export function getFileValidationError(file: File): string | null {
   if (file.size === 0) return 'The selected file is empty.'
   if (file.size > MAX_FILE_SIZE_BYTES) {
-    return `File "${file.name}" exceeds the 10 MB limit.`
+    return `File "${file.name}" exceeds the 100 MB limit.`
   }
 
   const ext = '.' + (file.name.split('.').pop()?.toLowerCase() ?? '')

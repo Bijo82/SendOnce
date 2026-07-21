@@ -2,7 +2,7 @@ export const API_BASE_URL = 'https://file-sharing-project-opcq.onrender.com'
 
 export const OTP_LENGTH = 6
 
-export const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024
+export const MAX_FILE_SIZE_BYTES = 100 * 1024 * 1024
 
 export const MAX_TEXT_LENGTH = 500_000
 
