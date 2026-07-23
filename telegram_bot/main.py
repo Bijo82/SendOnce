@@ -98,7 +98,7 @@ def main():
 
     logger.info("Starting SendOnce Telegram Bot...")
 
-    app.run_polling(
+    app.run_webhook(
         drop_pending_updates=True,
         bootstrap_retries=5
     )
