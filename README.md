@@ -7,7 +7,6 @@ Once the content is downloaded or viewed, the OTP becomes invalid and the resour
 ---
 
 ## 🌐 Live Demo
-
 https://send-once-azure.vercel.app
 
 ---
