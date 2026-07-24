@@ -1,377 +1,167 @@
 # 🚀 SendOnce
 
-A secure OTP-based file and text sharing platform that allows users to share files or text using a one-time access code or QR code.
+**Secure OTP-based File & Text Sharing Platform**
 
-Once the content is downloaded or viewed, the OTP becomes invalid and the resource is automatically cleaned up.
-
----
+SendOnce allows users to securely share text or files using a one-time password (OTP). Once the OTP is used, the content becomes inaccessible, ensuring one-time access for improved privacy.
 
 ## 🌐 Live Demo
-https://send-once-azure.vercel.app
+
+- **Website:** https://send-once-azure.vercel.app
+- **Telegram Bot:** https://t.me/sendonce_bot
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-## 📁 File Sharing
-
-* Upload single files
-* Upload multiple files
-* Automatic ZIP generation for multi-file uploads
-* One-time download access
-* 10-minute expiry
-
-## 📝 Text Sharing
-
-* Share small text instantly
-* Large text automatically stored as file
-* One-time view/download
-* Automatic cleanup
-
-## 🔐 OTP Security
-
-* Secure 6-character OTP generation
-* One-time access
-* OTP expiration after 10 minutes
-* Case-insensitive OTP validation
-
-## 📱 QR Sharing
-
-* Generate QR code for every upload
-* Scan directly from mobile
-* Opens preview page before download
-
-## 👀 Preview System
-
-Before downloading, users can view:
-
-* Resource type
-* File name
-* Storage type
-
-## 🧹 Automatic Cleanup
-
-Resources are automatically removed when:
-
-* OTP expires
-* OTP is used
+- 🔐 One-Time Password (OTP) based sharing
+- 📄 Share text securely
+- 📁 Share files securely
+- 🤖 Telegram Bot integration
+- 🌐 Responsive web interface
+- ⚡ FastAPI backend
+- ☁️ Fully deployed cloud architecture
+- 🗑️ One-time access (OTP expires after use)
+- ❌ User-friendly error handling
 
 ---
 
-# 🏗️ System Architecture
+## 🏗️ Architecture
 
-```text
-                ┌─────────────┐
-                │   React UI  │
-                └──────┬──────┘
-                       │
-                       ▼
-                ┌─────────────┐
-                │  FastAPI    │
-                └──────┬──────┘
-                       │
-        ┌──────────────┴──────────────┐
-        ▼                             ▼
-┌─────────────────┐         ┌─────────────────┐
-│ Upstash Redis   │         │ Local Storage   │
-│ Metadata Layer  │         │ uploads/texts   │
-└─────────────────┘         └─────────────────┘
+<p align="center">
+  <img src="images/architecture.png" width="800">
+</p>
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React
+- Tailwind CSS
+- Axios
+
+### Backend
+- FastAPI
+- Python
+
+### Telegram Bot
+- python-telegram-bot
+
+### Deployment
+- Vercel
+- Render
+- Railway
+
+---
+
+## 📂 Project Structure
+
 ```
-
----
-
-# 🛠️ Tech Stack
-
-## Frontend
-
-* React
-* TypeScript
-* Vite
-* Tailwind CSS
-* Axios
-* React Router
-* QRCode Library
-
-## Backend
-
-* FastAPI
-* Python
-* Uvicorn
-
-## Database
-
-* Upstash Redis
-
-## Deployment
-
-* Vercel
-* Render
-
-## DevOps
-
-* Docker
-* Git
-* GitHub
-
----
-
-
-
-# 📂 Project Structure
-
-```text
-SendOnce
+SendOnce/
 │
-├── backend
-│   ├── routes
-│   ├── services
-│   ├── storage
-│   ├── uploads
-│   ├── texts
-│   ├── models
-│   └── main.py
-│
-├── frontend
-│   ├── src
-│   │   ├── components
-│   │   ├── pages
-│   │   ├── hooks
-│   │   ├── services
-│   │   ├── types
-│   │   └── utils
-│   │
-│   └── public
-│
+├── frontend/
+├── backend/
+├── telegram_bot/
 └── README.md
 ```
 
 ---
 
-# 🔄 Application Flow
+## ⚙️ Installation
 
-```text
-Upload File/Text
-        ↓
-Generate OTP
-        ↓
-Generate QR Code
-        ↓
-Store Metadata in Redis
-        ↓
-User Shares OTP / QR
-        ↓
-Recipient Opens Preview
-        ↓
-Download/View Content
-        ↓
-Mark OTP Used
-        ↓
-Cleanup Service Removes Resource
-```
-
----
-
-# 📡 API Endpoints
-
-## Upload File
-
-```http
-POST /uploadfile
-```
-
-Form Data:
-
-```text
-uploaded_file
-```
-
----
-
-## Upload Text
-
-```http
-POST /uploadtext
-```
-
-Body:
-
-```json
-{
-  "text": "Hello World"
-}
-```
-
----
-
-## Preview Resource
-
-```http
-GET /preview?otp=ABC123
-```
-
-Response:
-
-```json
-{
-  "type": "file",
-  "filename": "resume.pdf",
-  "storage": "file"
-}
-```
-
----
-
-## Download Resource
-
-```http
-GET /download?otp=ABC123
-```
-
----
-
-# ⚙️ Local Setup
-
-## Clone Repository
+### Clone
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/yourusername/SendOnce.git
 cd SendOnce
 ```
 
----
-
-## Backend Setup
+### Backend
 
 ```bash
 cd backend
-
-python -m venv .venv
-
-source .venv/bin/activate
-```
-
-Windows:
-
-```bash
-.venv\Scripts\activate
-```
-
-Install dependencies:
-
-```bash
 pip install -r requirements.txt
-```
-
-Create environment variables:
-
-```env
-UPSTASH_REDIS_REST_URL=
-UPSTASH_REDIS_REST_TOKEN=
-```
-
-Run backend:
-
-```bash
 uvicorn main:app --reload
 ```
 
----
+### Telegram Bot
 
-## Frontend Setup
+```bash
+cd telegram_bot
+pip install -r requirements.txt
+python main.py
+```
+
+### Frontend
 
 ```bash
 cd frontend
-
 npm install
-```
-
-Create environment variables:
-
-```env
-VITE_API_URL=http://localhost:8000
-```
-
-Run frontend:
-
-```bash
 npm run dev
 ```
 
 ---
 
-# ⚠️ Challenges Faced
+## 🔑 Environment Variables
 
-## OTP Case Sensitivity
+### Backend
 
-Issue:
-
-```text
-Backend generated mixed-case OTPs
-Frontend converted them to uppercase
-Redis lookup failed
+```
+API_KEY=
+UPLOAD_FOLDER=
 ```
 
-Solution:
+### Telegram Bot
 
-```text
-Switched to uppercase-only OTP generation
-Normalized OTPs before validation
+```
+BOT_TOKEN=
+API_URL=
 ```
 
 ---
 
-## Multi-file Sharing
+## 📸 Screenshots
 
-Issue:
+Add screenshots here:
 
-```text
-One OTP needed to support multiple files
-```
+- Home Page
+<p align="center">
+  <img src="images/Homepage.png" width="800">
+</p>
 
-Solution:
+- Upload Page
+<p align="center">
+  <img src="images/upload.png" width="800">
+</p>
+- Generated OTP
+<p align="center">
+  <img src="images/otp.png" width="800">
+</p>
+- Telegram Bot
+<p align="center">
+  <img src="images/telegram.png" width="800">
+</p>
+- Download Screen
+<p align="center">
+  <img src="images/download.png" width="800">
+</p>
 
-```text
-Automatically package uploads into ZIP archives
-```
-
----
-
-## Vercel Route Refresh Issue
-
-Issue:
-
-```text
-/share/:otp
-```
-
-returned 404 after refresh.
-
-Solution:
-
-```json
-{
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ]
-}
-```
 
 ---
 
-# 🚀 Future Improvements
+## 🎯 Future Improvements
 
-* Cloudflare R2 storage
-* User authentication
-* Upload history
-* File encryption
-* Password-protected shares
-* Download analytics
-* Share expiration customization
-* Email sharing
-* Mobile application
+- Rate limiting
+- File expiration
+- Automatic cleanup scheduler
+- Drag-and-drop uploads
+- Download analytics
+- End-to-end encryption
+- Admin dashboard
 
 ---
 
+
+## 📄 License
+
+This project is licensed under the MIT License.
