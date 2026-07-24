@@ -28,7 +28,6 @@ from config import (
 
 logger = logging.getLogger(__name__)
 
-
 # ==========================================
 # Success Message
 # ==========================================
@@ -352,12 +351,12 @@ async def handle_document(
 
     if (
         document.file_size
-        and document.file_size > 50 * 1024 * 1024
+        and document.file_size > 100 * 1024 * 1024
     ):
 
         await update.message.reply_text(
             "❌ Telegram Bot API does not support "
-            "files larger than 50 MB.\n\n"
+            "files larger than 100 MB.\n\n"
             "Please use the website for larger files."
         )
 
@@ -368,11 +367,13 @@ async def handle_document(
     )
 
     temp_path = None
+    suffix = os.path.splitext(document.file_name)[1]
 
     try:
 
         with tempfile.NamedTemporaryFile(
-            delete=False
+            delete=False,
+            suffix=suffix
         ) as temp:
 
             telegram_file = await document.get_file()
