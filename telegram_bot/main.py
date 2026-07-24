@@ -11,7 +11,7 @@ from telegram.ext import (
     filters,
 )
 
-from config import BOT_TOKEN, PORT, WEBHOOK_SECRET, WEBHOOK_URL
+from config import BOT_TOKEN
 
 from handlers import (
     error_handler,
@@ -98,12 +98,7 @@ def main():
 
     logger.info("Starting SendOnce Telegram Bot...")
 
-    app.run_webhook(
-    listen="0.0.0.0",
-    port=PORT,
-    url_path=WEBHOOK_SECRET,
-    webhook_url=f"{WEBHOOK_URL}/{WEBHOOK_SECRET}",
-    secret_token=WEBHOOK_SECRET,
+    app.run_polling(
     drop_pending_updates=True,
     bootstrap_retries=5,
     )

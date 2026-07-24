@@ -14,10 +14,6 @@ load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 API_URL = os.getenv("API_URL")
-PORT = int(os.getenv("PORT", "10000"))
-WEBHOOK_URL = os.getenv("WEBHOOK_URL")
-WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
-# ==========================================
 # Application Constants
 # ==========================================
 
