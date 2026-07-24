@@ -82,7 +82,7 @@ def upload_text(text: str):
 # Upload File
 # ==========================================
 
-def upload_file(file_path: str):
+def upload_file(file_path: str, filename: str):
 
     with open(file_path, "rb") as file:
 
@@ -94,7 +94,7 @@ def upload_file(file_path: str):
 
                 "uploaded_file": (
 
-                    os.path.basename(file_path),
+                    filename,
 
                     file
 

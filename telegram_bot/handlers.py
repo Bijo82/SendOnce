@@ -384,7 +384,7 @@ async def handle_document(
 
             temp_path = temp.name
 
-        result = upload_file(temp_path)
+        result = upload_file(temp_path,document.file_name)
 
         await status.delete()
 
@@ -460,7 +460,7 @@ async def handle_photo(
 
             temp_path = temp.name
 
-        result = upload_file(temp_path)
+        result = upload_file(temp_path,"photo.jpg")
 
         await status.delete()
 
